@@ -1,7 +1,13 @@
 name: 'S3 upload'
 description: 'Github action to upload to S3 and add a version to the name'
 author: 'Fixter'
-inputs: 
+inputs:
+  aws-access-key-id:
+    description: 'AWS access key id'
+  aws-secret-access-key:
+    description: 'AWS secret access key'
+  aws-region:
+    default: 'eu-west-1'
   github_ref:
     description: 'Reference to the branch or tag beeing built'
   bucket_name:
@@ -15,6 +21,9 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
+    AWS_ACCESS_KEY_ID: ${{ inputs.aws-access-key-id }}
+    AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
+    AWS_DEFAULT_REGION: ${{ inputs.aws-region }}
     GITHUB_REF: ${{ inputs.github_ref }}
     BUCKET_NAME: ${{ inputs.bucket_name }}
     BUCKET_PATH: ${{ inputs.bucket_path }}
