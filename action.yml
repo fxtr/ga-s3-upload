@@ -1,0 +1,21 @@
+name: 'S3 upload'
+description: 'Github action to upload to S3 and add a version to the name'
+author: 'Fixter'
+inputs: 
+  github_ref:
+    description: 'Reference to the branch or tag beeing built'
+  bucket_name:
+    description: 'Name of the bucket'
+  bucket_path:
+    description: 'Upload path in the bucket'
+    default: ''
+  target:
+    description: 'File to upload'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    GITHUB_REF: ${{ inputs.github_ref }}
+    BUCKET_NAME: ${{ inputs.bucket_name }}
+    BUCKET_PATH: ${{ inputs.bucket_path }}
+    TARGET: ${{ inputs.target }}
