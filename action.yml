@@ -15,6 +15,9 @@ inputs:
   bucket_path:
     description: 'Upload path in the bucket'
     default: ''
+  no_release_path:
+    description: 'Do not append release version path to the bucket_path'
+    default: false
   target:
     description: 'File to upload'
 runs:
@@ -27,4 +30,5 @@ runs:
     GITHUB_REF: ${{ inputs.github_ref }}
     BUCKET_NAME: ${{ inputs.bucket_name }}
     BUCKET_PATH: ${{ inputs.bucket_path }}
+    NO_RELEASE_PATH: ${{ inputs.no_release_path }}
     TARGET: ${{ inputs.target }}
