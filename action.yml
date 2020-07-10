@@ -4,22 +4,34 @@ author: 'Fixter'
 inputs:
   aws-access-key-id:
     description: 'AWS access key id'
+    required: true
   aws-secret-access-key:
     description: 'AWS secret access key'
+    required: true
   aws-region:
+    description: 'AWS region'
     default: 'eu-west-1'
+    required: false
   github_ref:
     description: 'Reference to the branch or tag beeing built'
+    required: false
   bucket_name:
     description: 'Name of the bucket'
+    required: true
   bucket_path:
     description: 'Upload path in the bucket'
     default: ''
+    required: false
   no_release_path:
     description: 'Do not append release version path to the bucket_path'
-    default: false
+    default: ''
+    required: false
   target:
     description: 'File to upload'
+    required: false
+  target_dir:
+    description: 'Directory to upload'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -32,3 +44,4 @@ runs:
     BUCKET_PATH: ${{ inputs.bucket_path }}
     NO_RELEASE_PATH: ${{ inputs.no_release_path }}
     TARGET: ${{ inputs.target }}
+    TARGET_DIR: ${{ inputs.target_dir }}

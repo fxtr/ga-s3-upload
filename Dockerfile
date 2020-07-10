@@ -9,6 +9,7 @@ ENV BUCKET_NAME=''
 ENV BUCKET_PATH=''
 ENV NO_RELEASE_PATH=false
 ENV TARGET=''
+ENV TARGET_DIR=''
 
 RUN apk -v --update add \
     python \
