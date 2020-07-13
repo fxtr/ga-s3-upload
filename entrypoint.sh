@@ -4,6 +4,8 @@ set -o xtrace
 
 if [ "$NO_RELEASE_PATH" = true ] ; then
   aws s3 cp --acl private $TARGET s3://$BUCKET_NAME/$BUCKET_PATH/
+elif [ ! -z "$TARGET_DIR" ] ; then
+  aws s3 sync $TARGET_DIR s3://$BUCKET_NAME/$BUCKET_PATH/ --delete --acl private
 else
   BRANCH_NAME="${GITHUB_REF#refs/heads/}"
   DEV_VERSION="$BRANCH_NAME-$(date +'%Y%m%d%H%M')"
