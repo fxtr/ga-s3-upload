@@ -7,7 +7,7 @@ if [ "$NO_RELEASE_PATH" = true ] ; then
 elif [ ! -z "$TARGET_DIR" ] ; then
   S3Path="s3://${BUCKET_NAME}/"
   if [ ! -z "$BUCKET_PATH" ] ; then
-    S3Path+="${BUCKET_PATH}/"
+    S3Path=$S3Path$BUCKET_PATH/
   fi
   aws s3 sync $TARGET_DIR $S3Path --delete --acl private
 else
