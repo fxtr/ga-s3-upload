@@ -9,7 +9,7 @@ elif [ ! -z "$TARGET_DIR" ] ; then
   if [ ! -z "$BUCKET_PATH" ] ; then
     S3Path=$S3Path$BUCKET_PATH/
   fi
-  aws s3 sync $TARGET_DIR $S3Path --delete --acl private
+  aws s3 sync $TARGET_DIR $S3Path --delete --acl private $SYNC_OPTIONS
 else
   BRANCH_NAME="${GITHUB_REF#refs/heads/}"
   DEV_VERSION="$BRANCH_NAME-$(date +'%Y%m%d%H%M')"

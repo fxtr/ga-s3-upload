@@ -32,6 +32,9 @@ inputs:
   target_dir:
     description: 'Directory to upload'
     required: false
+  sync_options:
+    description: 'additional options for `aws s3 sync`'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -45,3 +48,4 @@ runs:
     NO_RELEASE_PATH: ${{ inputs.no_release_path }}
     TARGET: ${{ inputs.target }}
     TARGET_DIR: ${{ inputs.target_dir }}
+    SYNC_OPTIONS: ${{ inputs.sync_options }}
