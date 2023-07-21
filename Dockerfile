@@ -13,11 +13,11 @@ ENV TARGET_DIR=''
 ENV SYNC_OPTIONS=''
 
 RUN apk -v --update add \
-    python \
-    py-pip \
+    python3 \
+    py3-pip \
     && \
-  pip install --upgrade awscli && \
-  apk -v --purge del py-pip && \
+  pip3 install --upgrade awscli && \
+  apk -v --purge del py3-pip && \
   rm /var/cache/apk/*
 
 RUN apk add zip
