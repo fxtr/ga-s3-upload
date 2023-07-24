@@ -1,4 +1,6 @@
-FROM alpine:3.17.1
+FROM alpine:3.17.0
+
+ENV PYTHON_VERSION 3.9.16
 
 ENV AWS_ACCESS_KEY_ID=''
 ENV AWS_SECRET_ACCESS_KEY=''
@@ -13,11 +15,10 @@ ENV TARGET_DIR=''
 ENV SYNC_OPTIONS=''
 
 RUN apk -v --update add \
-    python3 \
+    python${PYTHON_VERSION} \
     py3-pip \
     && \
   pip3 install --upgrade awscli && \
-  pip3 install six && \
   apk -v --purge del py3-pip && \
   rm /var/cache/apk/*
 
