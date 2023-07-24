@@ -17,6 +17,7 @@ RUN apk -v --update add \
     py3-pip \
     && \
   pip3 install --upgrade awscli && \
+  pip3 install six && \
   apk -v --purge del py3-pip && \
   rm /var/cache/apk/*
 
