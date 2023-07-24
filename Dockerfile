@@ -16,7 +16,7 @@ RUN apk -v --update add \
     python \
     py-pip \
     && \
-  pip install --upgrade awscli && \
+  pip install awscli==1.19.112 && \
   apk -v --purge del py-pip && \
   rm /var/cache/apk/*
 
